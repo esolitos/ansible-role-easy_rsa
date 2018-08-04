@@ -1,5 +1,6 @@
 ---
 - hosts: all
-
+  vars:
+    test_clients: ["test_client1", "test.client2.example.com"]
   roles:
-    - role_under_test
+    - { role: role_under_test, easy_rsa_clients: "{{test_clients}}" }

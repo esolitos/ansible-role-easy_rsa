@@ -76,20 +76,6 @@
   tags:
     - easy_rsa
 
-- name: Generate CRL file
-  become: yes
-  shell: '. ./vars; $OPENSSL ca -gencrl -out {{ easy_rsa_key_dir }}/crl.pem -config "$KEY_CONFIG"'
-  environment:
-    KEY_CN: ""
-    KEY_OU: ""
-    KEY_NAME: ""
-    KEY_ALTNAMES: ""
-  creates:
-    chdir: "{{ easy_rsa_ca_dir }}"
-    creates: "{{ easy_rsa_key_dir }}/crl.pem"
-  tags:
-    - easy_rsa
-
 - name: Generate client certificates and keys
   become: yes
   shell: ". ./vars; ./pkitool {{ item }} >/dev/null"
