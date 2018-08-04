@@ -1,12 +1,12 @@
 ---
 # tasks file for easy_rsa
 
-- name: Include distribution specific variables
-  include_vars: "{{ ansible_distribution }}.yml"
-  tags:
-    - easy_rsa
-
-- include: "{{ ansible_distribution }}.yml"
+- name: Install easy-rsa packages
+  become: yes
+  apt:
+    name: "{{ easy_rsa_packages }}"
+    state: latest
+    cache_valid_time: 86400
   tags:
     - easy_rsa
 
