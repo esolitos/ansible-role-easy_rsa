@@ -4,9 +4,7 @@
 services: docker
 
 env:
-  # - distro: ubuntu1804
-  # - distro: ubuntu1604
-  - distro: debian9
+  - distro: ubuntu1604
   - distro: debian8
 
 script:
