@@ -15,5 +15,5 @@ script:
   # Run tests.
   - ${PWD}/tests/test-ansible-role.sh -d $distro"
 
-# notifications:
-#   webhooks: https://galaxy.ansible.com/api/v1/notifications/
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
