@@ -37,14 +37,14 @@ Example Playbook
 
 Install easy-rsa
 ```yaml
-- hosts: all
+- hosts: root-ca
   roles:
     - esolitos.easy_rsa
 ```
 
 Install easy-rsa and generate a client cert/key
 ```yaml
-- hosts: all
+- hosts: root-ca
   vars:
     easy_rsa_clients:
       - client1

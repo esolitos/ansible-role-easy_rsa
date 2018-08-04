@@ -1,42 +1,21 @@
 ---
-sudo: required
-dist: trusty
+# Test this transmission-daemon role using travis CI and docker
+# @see https://www.jeffgeerling.com/blog/2018/how-i-test-ansible-configuration-on-7-different-oses-docker
+services: docker
 
-language: generic
-
-before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y python python-pip
-
-install:
-  # Install ansible
-  - sudo pip install ansible
-
-  # Check ansible version
-  - ansible --version
-
-  # Create ansible.cfg with correct roles_path
-  - printf '[defaults]\nroles_path=../' >ansible.cfg
-
-  # Install role dependencies
-  # ...
+env:
+  # - distro: ubuntu1804
+  # - distro: ubuntu1604
+  - distro: debian9
+  - distro: debian8
 
 script:
-  # Basic role syntax check
-  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
+  # Download test shim.
+  - wget -O ${PWD}/tests/test-ansible-role.sh https://raw.githubusercontent.com/esolitos/gists/master/shell/test-ansible-role.sh
+  - chmod +x ${PWD}/tests/test-ansible-role.sh
 
-  # Run the role/playbook with ansible-playbook
-  - ansible-playbook tests/test.yml -i tests/inventory --connection=local --become
+  # Run tests.
+  - ${PWD}/tests/test-ansible-role.sh -d $distro"
 
-  # Run the role/playbook again, checking to make sure it's idempotent
-  - >
-    ansible-playbook tests/test.yml -i tests/inventory --connection=local --become
-    | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
-
-  # Playbook specific tests
-  # ...
-
-notifications:
-  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+# notifications:
+#   webhooks: https://galaxy.ansible.com/api/v1/notifications/

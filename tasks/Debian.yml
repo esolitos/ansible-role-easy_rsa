@@ -1,5 +1,5 @@
 ---
-# tasks file for easy_rsa (Ubuntu specific)
+# tasks file for easy_rsa (Debian specific)
 
 - name: Install easy-rsa packages
   become: yes
