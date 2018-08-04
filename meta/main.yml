@@ -1,16 +1,18 @@
 ---
 galaxy_info:
-  author: Kevin Brebanov
+  author: Esolitos (forked from Kevin Brebanov)
   description: Installs and configures easy-rsa
   company:
   license: GPL
   min_ansible_version: 1.9
   github_branch: master
   platforms:
-    - name: Ubuntu
+    - name: Debian
       versions:
-        - trusty
-        - xenial
+        - jessie
+    - name: Devuan
+      versions:
+        - jessie
   galaxy_tags:
     - system
 dependencies: []
