@@ -1,7 +1,7 @@
 easy_rsa
 ========
 
-[![Build Status](https://travis-ci.org/esolitos/ansible-easy_rsa.svg?branch=master)](https://travis-ci.org/esolitos/ansible-easy_rsa)
+[![Build Status](https://travis-ci.org/esolitos/ansible-role-easy_rsa.svg?branch=master)](https://travis-ci.org/esolitos/ansible-role-easy_rsa)
 
 Installs and configures easy-rsa
 
